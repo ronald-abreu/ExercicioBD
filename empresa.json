@@ -1,0 +1,96 @@
+{
+    "funcionarios": [
+        {
+            "id": 1,
+            "primeiro_nome": "João",
+            "meio_nome": "D",
+            "ultimo_nome": "Silva",
+            "cpf": "123.456.789-00",
+            "endereco": "Rua 1, 123",
+            "salario": 3500,
+            "sexo": "M",
+            "data_nascimento": "01/01/1990",
+            "projetos": [
+                1,
+                3
+            ]
+        },
+        {
+            "id": 2,
+            "primeiro_nome": "Maria",
+            "meio_nome": "A",
+            "ultimo_nome": "Costa",
+            "cpf": "987.654.321-00",
+            "endereco": "Rua 2, 456",
+            "salario": 3500,
+            "sexo": "F",
+            "data_nascimento": "02/02/1985",
+            "projetos": [
+                2
+            ]
+        }
+    ],
+    "departamentos": [
+        {
+            "id": 1,
+            "nome": "TI",
+            "numero": "001",
+            "gerente": {
+                "id": 1,
+                "primeiro_nome": "João",
+                "meio_nome": "D",
+                "ultimo_nome": "Silva",
+                "cpf": "123.456.789-00",
+                "endereco": "Rua 1, 123",
+                "salario": 3500,
+                "sexo": "M",
+                "data_nascimento": "01/01/1990",
+                "projetos": [
+                    1,
+                    3
+                ]
+            },
+            "projetos": []
+        },
+        {
+            "id": 2,
+            "nome": "RH",
+            "numero": "002",
+            "gerente": {
+                "id": 2,
+                "primeiro_nome": "Maria",
+                "meio_nome": "A",
+                "ultimo_nome": "Costa",
+                "cpf": "987.654.321-00",
+                "endereco": "Rua 2, 456",
+                "salario": 3500,
+                "sexo": "F",
+                "data_nascimento": "02/02/1985",
+                "projetos": [
+                    2
+                ]
+            },
+            "projetos": []
+        }
+    ],
+    "projetos": [
+        {
+            "id": 1,
+            "nome": "Desenvolvimento Sistema",
+            "numero": "101",
+            "local": "São Paulo"
+        },
+        {
+            "id": 2,
+            "nome": "Treinamento Funcional",
+            "numero": "102",
+            "local": "Rio de Janeiro"
+        },
+        {
+            "id": 3,
+            "nome": "Sistema Novo",
+            "numero": "103",
+            "local": "Ceara"
+        }
+    ]
+}
