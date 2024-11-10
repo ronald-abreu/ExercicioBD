@@ -1,12 +1,19 @@
 class Projeto:
-    def __init__(self, id, nome, numero, local):
+    def __init__(self, id, nome, numero, local, departamento_id):
         self.id = id
         self.nome = nome
         self.numero = numero
         self.local = local
+        self.departamento_id = departamento_id  # Armazene apenas o ID do departamento
 
     def to_dict(self):
-        return vars(self)
+        return {
+            'id': self.id,
+            'nome': self.nome,
+            'numero': self.numero,
+            'local': self.local,
+            'departamento_id': self.departamento_id  # Apenas o ID do departamento
+        }
 
 def criar_projeto(banco, **dados):
     banco['projetos'].append(Projeto(**dados))

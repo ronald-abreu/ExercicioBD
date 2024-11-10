@@ -13,11 +13,14 @@ class Departamento:
 
     def to_dict(self):
         return {
-            **vars(self),
-            'gerente': self.gerente.to_dict(),
-            'projetos': [p.to_dict() for p in self.projetos]
+            'id': self.id,
+            'nome': self.nome,
+            'numero': self.numero,
+            'gerente': self.gerente.to_dict() if self.gerente else None,  # Conversão do gerente para dicionário
+            'projetos': [p.id for p in self.projetos]  # Aqui, você deve armazenar apenas o ID dos projetos
         }
-
+    
+    
 def criar_departamento(banco, id, nome, numero, gerente):
     banco['departamentos'].append(Departamento(id, nome, numero, gerente))
 

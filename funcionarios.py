@@ -31,7 +31,14 @@ def atualizar_funcionario(banco, id, **dados_atualizados):
 
 
 def deletar_funcionario(banco, id):
+    
+    for departamento in banco['departamentos']:
+        if departamento.gerente.id == id:
+            departamento.gerente = None  
+
+    
     banco['funcionarios'] = [f for f in banco['funcionarios'] if f.id != id]
+
 
 
 def listar_funcionarios(banco):
