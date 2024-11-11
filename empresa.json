@@ -1,0 +1,13 @@
+{
+    "funcionarios": [],
+    "departamentos": [
+        {
+            "id": 1,
+            "nome": "TI",
+            "numero": "100",
+            "gerente": null,
+            "projetos": []
+        }
+    ],
+    "projetos": []
+}
