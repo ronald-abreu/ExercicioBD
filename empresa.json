@@ -1,13 +1,60 @@
 {
-    "funcionarios": [],
+    "funcionarios": [
+        {
+            "id": 1,
+            "primeiro_nome": "Raul",
+            "meio_nome": "S",
+            "ultimo_nome": "Brilhante",
+            "cpf": "123-654-789-01",
+            "endereco": "Rua daora",
+            "salario": 0.0,
+            "sexo": "M",
+            "data_nascimento": "11/03/2004",
+            "projetos": []
+        },
+        {
+            "id": 3,
+            "primeiro_nome": "Ronald",
+            "meio_nome": "A",
+            "ultimo_nome": "Nascimento",
+            "cpf": "12121212121",
+            "endereco": "nao",
+            "salario": 2932932932.0,
+            "sexo": "M",
+            "data_nascimento": "2332323",
+            "projetos": []
+        }
+    ],
     "departamentos": [
         {
             "id": 1,
-            "nome": "TI",
-            "numero": "100",
+            "nome": "Nao sei",
+            "numero": "12345",
+            "gerente": null,
+            "projetos": []
+        },
+        {
+            "id": 2,
+            "nome": "Okay",
+            "numero": "n",
             "gerente": null,
             "projetos": []
         }
     ],
-    "projetos": []
+    "projetos": [
+        {
+            "id": 1,
+            "nome": "Trafico",
+            "numero": "123",
+            "local": "Fome",
+            "departamento_id": 2
+        },
+        {
+            "id": 2,
+            "nome": "Roubo",
+            "numero": "321",
+            "local": "Fome",
+            "departamento_id": 3
+        }
+    ]
 }

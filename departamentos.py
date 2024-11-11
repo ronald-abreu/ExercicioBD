@@ -22,9 +22,27 @@ class Departamento:
     
     
 def criar_departamento(banco):
-    id = int(input("ID: "))
-    nome = input("Nome do Departamento: ")
-    numero = input("Número: ")
+    while True:
+        id = int(input("ID: "))
+
+        if any(departamento.id == id for departamento in banco['departamentos']):
+            print("ID já existente. Por favor, insira um ID diferente.")
+        else: break
+
+    while True:
+        nome = input("Nome do Departamento: ")
+
+        if any(departamento.nome == nome for departamento in banco['departamentos']):
+            print("Nome de departamento já existente. Por favor, insira um nome diferente.")
+        else: break
+    
+    while True:
+        numero = input("Número: ")
+
+        if any(departamento.numero == numero for departamento in banco['departamentos']):
+            print("Número de departamento já existente. Por favor, insira um número diferente.")
+        else: break
+
     gerente_id = None  # gerente ainda não definido
     departamento = Departamento(id, nome, numero, gerente_id)
     banco['departamentos'].append(departamento)
@@ -33,9 +51,25 @@ def criar_departamento(banco):
 def atualizar_departamento(banco, id):
     dados_atualizados = {}
     if input("Atualizar Nome? (S/N): ").lower() == "s":
-        dados_atualizados["nome"] = input("Novo Nome: ")
+        while True:
+            novo_nome = input("Novo Nome: ")
+
+            if any(departamento.nome == novo_nome and departamento.id != id for departamento in banco['departamentos']):
+                print("Nome de departamento já existente. Por favor, insira um nome diferente.")
+            else:
+                dados_atualizados["nome"] = novo_nome
+                break
+
     if input("Atualizar Número? (S/N): ").lower() == "s":
-        dados_atualizados["numero"] = input("Novo Número: ")
+        while True:
+            novo_numero = input("Novo Número: ")
+
+            if any(departamento.numero == novo_numero and departamento.id != id for departamento in banco['departamentos']):
+                print("Número de departamento já existente. Por favor, insira um número diferente.")
+            else:
+                dados_atualizados["numero"] = novo_numero
+                break
+            
     if input("Atualizar Gerente? (S/N): ").lower() == "s":
         gerente_id = int(input("Novo Gerente (ID do Funcionário): "))
         gerente = next((f for f in banco['funcionarios'] if f.id == gerente_id), None)

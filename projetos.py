@@ -18,9 +18,27 @@ class Projeto:
         }
 
 def criar_projeto(banco):
-    id = int(input("ID do Projeto: "))
-    nome = input("Nome do Projeto: ")
-    numero = input("Número: ")
+    while True:
+        id = int(input("ID do Projeto: "))
+
+        if any(projeto.id == id for projeto in banco['projetos']):
+            print("ID já existente. Por favor, insira um ID diferente.")
+        else: break
+
+    while True:
+        nome = input("Nome do Projeto: ")
+
+        if any(projeto.nome == nome for projeto in banco['projetos']):
+            print("Nome de projeto já existente. Por favor, insira um nome diferente.")
+        else: break
+
+    while True:
+        numero = input("Número: ")
+
+        if any(projeto.numero == numero for projeto in banco['projetos']):
+            print("Número de projeto já existente. Por favor, insira um número novo.")
+        else: break
+        
     local = input("Local: ")
     departamento_id = int(input("ID do Departamento: "))
 
@@ -45,7 +63,15 @@ def criar_projeto(banco):
 def atualizar_projeto(banco, id, **dados_atualizados):
     dados_atualizados = {}
     if input("Atualizar Nome? (S/N): ").lower() == "s":
-        dados_atualizados["nome"] = input("Novo Nome: ")
+        while True:
+            novo_nome = input("Novo Nome: ")
+
+            if any(projeto.nome == novo_nome and projeto.id != id for projeto in banco['projetos']):
+                print("Nome de projeto já existente. Por favor, insira um nome diferente.")
+            else:
+                dados_atualizados["nome"] = novo_nome
+                break
+
     if input("Atualizar Local? (S/N): ").lower() == "s":
         dados_atualizados["local"] = input("Novo Local: ")
     for projeto in banco['projetos']:
