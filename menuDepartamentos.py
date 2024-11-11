@@ -17,7 +17,7 @@ def menu_departamentos(banco):
             id = int(input("ID: "))
             nome = input("Nome do Departamento: ")
             numero = input("Número: ")
-            gerente_id = None  # Gerente ainda não definido
+            gerente_id = None  # gerente ainda não definido
             departamento = Departamento(id, nome, numero, gerente_id)
             banco['departamentos'].append(departamento)
             print("Departamento cadastrado!")

@@ -61,9 +61,11 @@ def buscar_funcionario_por_cpf(banco, cpf):
 
 def associar_funcionario_a_projeto(banco, funcionario_id, projeto_id):
     funcionario = next((f for f in banco['funcionarios'] if f.id == funcionario_id), None)
-    if funcionario and projeto_id not in funcionario.projetos:
-        funcionario.projetos.append(projeto_id)
-        return True
+    if funcionario:
+        # Verifica se o ID do projeto já está associado ao funcionário
+        if projeto_id not in funcionario.projetos:
+            funcionario.projetos.append(projeto_id)
+            return True
     return False
 
 

@@ -1,6 +1,7 @@
 from banco import salvar_em_arquivo
 from projetos import Projeto
 from departamentos import Departamento
+from funcionarios import associar_funcionario_a_projeto
 
 def menu_projetos(banco):
     while True:
@@ -13,23 +14,31 @@ def menu_projetos(banco):
         opcao = input("Escolha uma opção: ")
         
         if opcao == "1":
-            id = int(input("ID: "))
+            id = int(input("ID do Projeto: "))
             nome = input("Nome do Projeto: ")
             numero = input("Número: ")
             local = input("Local: ")
-            departamento_id = int(input("ID do Departamento: "))  # ID do departamento, não o objeto inteiro
+            departamento_id = int(input("ID do Departamento: "))
 
-            # Criar o projeto com o ID do departamento
             projeto = Projeto(id, nome, numero, local, departamento_id)
+            banco['projetos'].append(projeto)
 
             # Associar o projeto ao departamento
             departamento = next((d for d in banco['departamentos'] if d.id == departamento_id), None)
             if departamento:
                 departamento.adicionar_projeto(projeto)
-                banco['projetos'].append(projeto)
-                print("Projeto cadastrado e associado ao departamento!")
-            else:
-                print("Departamento não encontrado!")
+                print(f"Projeto {projeto.nome} associado ao departamento {departamento.nome}!")
+
+            # Perguntar se deseja associar o projeto a um funcionário
+            associar = input("Deseja associar este projeto a um funcionário? (S/N): ").strip().lower()
+            if associar == 's':
+                funcionario_id = int(input("ID do Funcionário: "))
+                if associar_funcionario_a_projeto(banco, funcionario_id, projeto.id):
+                    print(f"Projeto {projeto.nome} foi associado ao funcionário com ID {funcionario_id}.")
+                else:
+                    print("Erro ao associar o projeto ao funcionário.")
+
+
         elif opcao == "2":
             id = int(input("ID do Projeto a atualizar: "))
             dados_atualizados = {}
