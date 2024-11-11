@@ -12,6 +12,10 @@ def menu_projetos(banco):
         opcao = input("Escolha uma opção: ")
         
         if opcao == "1":
+            if not banco['departamentos']:
+                print("Antes de cadastrar, crie pelo menos um departamento.")
+                continue
+
             criar_projeto(banco)
             salvar_em_arquivo(banco, 'empresa.json')
             break

@@ -16,7 +16,7 @@ def menu_funcionarios(banco):
         
         if opcao == "1":
             if not banco['departamentos']:
-                print("Antes de cadastrar um funcionário, crie pelo menos um departamento.")
+                print("Antes de cadastrar, crie pelo menos um departamento.")
                 continue
             # Cadastro de funcionário
             criar_funcionario(banco)
