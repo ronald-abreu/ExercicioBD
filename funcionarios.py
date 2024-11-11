@@ -18,11 +18,24 @@ class Funcionario:
 
 
 def criar_funcionario(banco):
-    id = int(input("ID do Funcionário: "))
+    while True:
+        id = int(input("ID do Funcionário: "))
+
+        if any(funcionario.id == id for funcionario in banco['funcionarios']):
+            print("ID já existente. Por favor, insira um ID diferente.")
+        else: break
+
     primeiro_nome = input("Primeiro Nome: ")
     meio_nome = input("Meio Nome: ")
     ultimo_nome = input("Último Nome: ")
-    cpf = input("CPF: ")
+
+    while True:
+        cpf = input("CPF: ")
+
+        if any(funcionario.cpf == cpf for funcionario in banco['funcionarios']):
+            print("CPF já registrado. Por favor, insira um CPF diferente.")
+        else: break
+
     endereco = input("Endereço: ")
     salario = float(input("Salário: "))
     sexo = input("Sexo: ")
@@ -58,7 +71,15 @@ def atualizar_funcionario(banco, id):
                 funcionario.primeiro_nome = input(f"Novo Primeiro Nome (atual: {funcionario.primeiro_nome}): ")
                 funcionario.meio_nome = input(f"Novo Meio Nome (atual: {funcionario.meio_nome}): ")
                 funcionario.ultimo_nome = input(f"Novo Último Nome (atual: {funcionario.ultimo_nome}): ")
-                funcionario.cpf = input(f"Novo CPF (atual: {funcionario.cpf}): ")
+                while True:
+                    novo_cpf = input(f"Novo CPF (atual: {funcionario.cpf}): ")
+
+                    if any(funcionario.cpf == novo_cpf and funcionario.id != id for funcionario in banco['funcionarios']):
+                        print("CPF já registrado. Por favor, insira um CPF diferente.")
+                    else:
+                        funcionario.cpf = novo_cpf
+                        break
+
                 funcionario.endereco = input(f"Novo Endereço (atual: {funcionario.endereco}): ")
                 funcionario.salario = float(input(f"Novo Salário (atual: {funcionario.salario}): "))
                 funcionario.sexo = input(f"Novo Sexo (atual: {funcionario.sexo}): ")
@@ -73,7 +94,14 @@ def atualizar_funcionario(banco, id):
                 if input("Atualizar Último Nome? (S/N): ").lower() == "s":
                     funcionario.ultimo_nome = input(f"Novo Último Nome (atual: {funcionario.ultimo_nome}): ")
                 if input("Atualizar CPF? (S/N): ").lower() == "s":
-                    funcionario.cpf = input(f"Novo CPF (atual: {funcionario.cpf}): ")
+                    while True:
+                        novo_cpf = input(f"Novo CPF (atual: {funcionario.cpf}): ")
+
+                        if any(funcionario.cpf == novo_cpf and funcionario.id != id for funcionario in banco['funcionarios']):
+                            print("CPF já registrado. Por favor, insira um CPF diferente.")
+                        else:
+                            funcionario.cpf = novo_cpf
+                            break
                 if input("Atualizar Endereço? (S/N): ").lower() == "s":
                     funcionario.endereco = input(f"Novo Endereço (atual: {funcionario.endereco}): ")
                 if input("Atualizar Salário? (S/N): ").lower() == "s":
